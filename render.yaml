@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: entrelinhas
+    runtime: python
+    buildCommand: ""
+    startCommand: "python app.py"
+    plan: starter
+    envVars:
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DATABASE_PATH
+        value: /var/data/entrelinhas.sqlite3
+      - key: PORT
+        value: "10000"
+    disk:
+      name: entrelinhas-data
+      mountPath: /var/data
+      sizeGB: 1
